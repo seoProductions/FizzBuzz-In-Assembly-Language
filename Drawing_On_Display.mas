@@ -1,0 +1,33 @@
+﻿MAIN, 		CLEAR
+            JNS DRAW
+        	HALT
+            
+DRAW,			HEX 2					/ return to this adress once finished
+				JNS CALC_OFFSET
+            	LOAD RED				/ load in color
+				STOREI PIXEL_OFFSET		/ update tile color
+                JUMPI DRAW				/ return
+				
+/ calculate adress of given pixel tile
+CALC_OFFSET,	HEX 6					/ return to this adress once finished
+				LOAD PIXEL_ADRESS		/ fetch the adress of the "first" tile 
+                ADD  INDEX				/ calculate new index
+                STORE PIXEL_OFFSET		/ store new adress
+				JUMPI CALC_OFFSET		/ return
+                
+
+
+
+/variables
+INDEX,	DEC 8	/ zero would be top left tile of the display
+ONE, 	DEC 1
+PIXEL_ADRESS, 		HEX F00
+PIXEL_OFFSET,		HEX 0
+
+
+/ colors
+GREEN,				HEX 000F0F
+RED,				HEX 00F000
+BLUE, 				HEX 0000FF
+YELLOW, 			HEX 00FF00
+
