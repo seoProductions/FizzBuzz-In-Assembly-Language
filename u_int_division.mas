@@ -1,0 +1,87 @@
+﻿/ *** Demonstration for unsigned integer division *** /
+
+/ *** EXAMPLE 1 *** /
+MAIN, 	Clear
+/Store divisor
+		Load THREE
+        Store DIVISOR
+/Divide 50 / 3
+		Load  FIFTY
+        JnS DIVISION
+/Print quotient
+        Load QUOTIENT		/ 50/3 = 
+        Output
+        
+        Load NEG_ONE		/ reset quotient
+        Store QUOTIENT
+
+/ *** EXAMPLE 2 *** /
+
+/Store divisor
+		Load THREE
+        Store DIVISOR
+/Divide 90 / 3
+		Load  NINTEY
+        JnS DIVISION
+/Print quotient
+        Load QUOTIENT		/ 90/3 = 30 
+        Output
+        
+        Load NEG_ONE		/ reset quotient
+        Store QUOTIENT
+
+/ *** EXAMPLE 3 *** /
+
+/Store divisor
+		Load FIVE
+        Store DIVISOR
+/Divide 71 / 5
+		Load  SEVENTY_ONE
+        JnS DIVISION
+/Print quotient
+        Load QUOTIENT		/ 71/5 = 30 
+        Output
+        
+        Load NEG_ONE		/ reset quotient
+        Store QUOTIENT
+
+		HALT
+
+/ Division is implimented as repeated subtraction
+/ untill ACCUMILATOR is negative
+DIVISION,	DEC 0 				/ return adress stored here
+			
+            
+LOOP,		Store TEMP			/ store value of ACCUMILATOR
+            Load QUOTIENT		
+            Add ONE				/ incriment QUOTIENT
+            Store QUOTIENT
+           
+/ subtraction
+            Load TEMP
+            Subt DIVISOR
+            
+            Skipcond 000		/ return if TEMP < 0
+            Jump LOOP			/ repeat
+
+			JumpI DIVISION		/ return
+
+            
+
+/ Variables for division
+QUOTIENT,	DEC -1	/ default -1
+DIVISOR,	DEC 1
+TEMP,		DEC 0	/ Store value of ACC temporarily (while incrimenting quotient)
+
+/ Test numbers
+FIFTY,		DEC 50
+SEVENTY_ONE,DEC 71
+NINTEY,		DEC 90
+
+/ Test divisors
+ONE, 	 DEC  1
+THREE,	 DEC  3
+FIVE,	 DEC  5
+
+/Other
+NEG_ONE, DEC -1
