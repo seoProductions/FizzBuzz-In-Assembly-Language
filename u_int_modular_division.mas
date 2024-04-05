@@ -1,0 +1,74 @@
+﻿/ *** Demonstration for unsigned integer modular division *** /
+
+/ *** EXAMPLE 1 *** /
+
+
+MAIN, 	Clear
+/Store divisor
+		Load THREE
+        Store DIVISOR
+/ 50 mod 3
+		Load  FIFTY
+        JnS MODULAR_DIV
+/Print quotient
+        Load REMAINDER		/ 50 % 3 = 2
+        Output
+
+
+/ *** EXAMPLE 2 *** /
+
+
+/Store divisor
+		Load THREE
+        Store DIVISOR
+/ 90 % 3 = 0
+		Load  NINTEY
+        JnS MODULAR_DIV
+/Print quotient
+        Load REMAINDER		/ 90 % 3 = 0 
+        Output
+
+
+/ *** EXAMPLE 3 *** /
+
+
+/Store divisor
+		Load FIVE
+        Store DIVISOR
+/ 71 mod 5
+		Load  SEVENTY_ONE
+        JnS MODULAR_DIV
+/Print quotient
+        Load REMAINDER		/ 71 % 5 = 1
+        Output
+        
+		HALT
+
+/ Modular Division is implimented as repeated subtraction
+/ untill ACCUMILATOR is negative
+/ #returns value of AC before it dips below 0
+MODULAR_DIV,DEC 0 				/ return adress stored here
+			
+LOOP,		Store REMAINDER			/ store value of ACCUMILATOR           
+/ subtraction
+            Subt DIVISOR
+            
+            Skipcond 000		/ return if ACCUMILATOR < 0
+            Jump LOOP			/ repeat
+
+			JumpI MODULAR_DIV	/ return
+
+            
+
+/ Variables for division
+REMAINDER,  DEC 0
+DIVISOR,	DEC 1
+
+/ Test numbers
+FIFTY,		DEC 50
+SEVENTY_ONE,DEC 71
+NINTEY,		DEC 90
+
+/ Test divisors
+THREE,	 DEC  3
+FIVE,	 DEC  5
