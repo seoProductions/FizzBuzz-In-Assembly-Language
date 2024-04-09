@@ -1,4 +1,7 @@
-﻿MAIN, 		CLEAR
+﻿/ ***   SEVERLEY UNDERESTIMATED HOW INEFFICIENT PIXEL MANIPULATION IS   ***
+/ ***   All the program does is draw a red pixel on a 16x16 display   ***
+
+MAIN, 		CLEAR
             JNS DRAW
         	HALT
             
