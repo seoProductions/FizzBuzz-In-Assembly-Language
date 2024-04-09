@@ -1,4 +1,3 @@
-
 gcc Branching.c \
              -o run
 

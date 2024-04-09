@@ -11,7 +11,7 @@ int main() {
 
     if (AC == 0)  goto print_zero;      // normal branching
     if (!(AC < 0)) goto print_pos;      // skipping translates to this
-                    goto print_neg;     // default
+    else            goto print_neg;     // default
 
 
     print_zero:

@@ -5,12 +5,13 @@
 MAIN,   INPUT           / get user input
 
 
-/imitate if else statement
+/imitate if statement
         Skipcond 400    / if (AC = 0)
-        JUMP 15
+        JUMP 4
+
         JUMP PRINT_ZERO / execute this
 
-/if else
+/if
         Skipcond 000    / if (!(AC < 0))
         JUMP PRINT_POS  / execute this
 /else
@@ -23,16 +24,10 @@ PRINT_ZERO, LOAD ZERO
 PRINT_POS,  LOAD POSITIVE
 			OUTPUT
             HALT
-            
+
 PRINT_NEG,  LOAD NEGATIVE
 			OUTPUT
             HALT
-
-			
-
-
-
-
 
 
 
