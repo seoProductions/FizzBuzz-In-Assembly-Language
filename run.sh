@@ -1,4 +1,5 @@
 
-gcc Iterations.c -o run
+gcc Branching.c \
+             -o run
 
 ./run

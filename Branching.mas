@@ -3,29 +3,31 @@
 /                        -1 if the input is negative
 
 MAIN,   INPUT           / get user input
-/ use skips for equality
-        Skipcond 400    /if (y = 0)
-        JUMP PRINT_ZERO
 
-/ or imitate if else statement
-        Skipcond 000    /if (y > 0)
-        JUMP PRINT_POS
-        Skipcond 200    /if (y = 0)
-        JUMP PRINT_POS
-        HALT
 
-/ Subroutines
-PRINT_POS,  LOAD POSITIVE / onto ACCUMULATOR
+/imitate if else statement
+        Skipcond 400    / if (AC = 0)
+        JUMP 15
+        JUMP PRINT_ZERO / execute this
+
+/if else
+        Skipcond 000    / if (!(AC < 0))
+        JUMP PRINT_POS  / execute this
+/else
+        JUMP PRINT_NEG
+
+/goto statements
+PRINT_ZERO, LOAD ZERO
+			OUTPUT
+            HALT
+PRINT_POS,  LOAD POSITIVE
 			OUTPUT
             HALT
             
-PRINT_NEG,  LOAD NEGATIVE / onto ACCUMILATOR
+PRINT_NEG,  LOAD NEGATIVE
 			OUTPUT
             HALT
-            
-PRINT_ZERO, LOAD ZERO     / onto ACCUMILATOR
-			OUTPUT
-            HALT
+
 			
 
 

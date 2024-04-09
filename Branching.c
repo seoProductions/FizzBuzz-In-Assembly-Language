@@ -1,24 +1,30 @@
-// This program adds up all the numbers from 0 - 100
-// It then prints the sum to the output
+// This program demonstrates branching in the C language.
+// First example is your typical if statement
+// Second example uses skips
 
 #include <stdio.h>
-// subroutines AKA "functions"
-void PRINT_POS() {
-    printf("%u", 1)
-}
-void PRINT_NEG() {
-    printf("%u", -1)
-}
-void PRINT_ZERO() {
-    printf("%u", 0)
-}
 
 int main() {
 
-    int AC = scanf();
+    int AC = 0;
+    scanf("%d", &AC);                   // get user input
 
-    if (y = 0)  PRINT_ZERO();
-    if ()
+    if (AC == 0)  goto print_zero;      // normal branching
+    if (!(AC < 0)) goto print_pos;      // skipping translates to this
+                    goto print_neg;     // default
+
+
+    print_zero:
+        printf("%i", 0);
+        return 0;
+
+    print_pos:
+        printf("%i", 1);
+        return 0;
+
+    print_neg:
+        printf("%i", -1);
+        return 0;
 
     return 0;
 }
