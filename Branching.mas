@@ -1,12 +1,18 @@
-﻿INPUT
-STORE Y
-Skipcond 800 /if (y < 0)
-JUMP PRINT_NEG
-Skipcond 000 /if (y > 0)
-JUMP PRINT_POS
-Skipcond 200 /if (y = 0)
-JUMP PRINT_POS
-HALT
+﻿/ This program will print 1 if the input is positive
+/                         0 if the input is zero
+/                        -1 if the input is negative
+
+MAIN,   INPUT           / get user input
+/ use skips for equality
+        Skipcond 400    /if (y = 0)
+        JUMP PRINT_ZERO
+
+/ or imitate if else statement
+        Skipcond 000    /if (y > 0)
+        JUMP PRINT_POS
+        Skipcond 200    /if (y = 0)
+        JUMP PRINT_POS
+        HALT
 
 / Subroutines
 PRINT_POS,  LOAD POSITIVE / onto ACCUMULATOR
@@ -29,7 +35,6 @@ PRINT_ZERO, LOAD ZERO     / onto ACCUMILATOR
 
 
 /Variables
-Y, 		  DEC  0
 NEGATIVE, DEC -1
 POSITIVE, DEC  1
 ZERO,     DEC  0
