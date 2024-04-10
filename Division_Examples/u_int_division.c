@@ -1,5 +1,9 @@
-// This program adds up all the numbers from 0 - 100
-// It then prints the sum to the output
+// This program impliments Division instructions as repeated subrtraction
+// It closeley resembles assembly language code, with far greater readability
+// Modern High level languages are soo powerfull we can
+// resolve this code down to 1 single line
+
+//     printf("%i\n", 5 / 3);
 
 #include <stdio.h>
 
@@ -9,7 +13,8 @@ unsigned int TEMP     =  0;
 signed   int AC       =  0;
 
 void Division()
-{
+{   // invisible return adress here
+
     TEMP = AC;
 
     loop:
@@ -17,7 +22,7 @@ void Division()
 
         TEMP -= Divisor;       // subtract
         AC    = TEMP   ;
-        if ( AC < 0) return;
+        if ( AC < 0 ) return;
         goto loop;             // repeat
 }
 

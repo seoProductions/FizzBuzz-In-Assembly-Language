@@ -1,13 +1,13 @@
 ﻿/ *** Demonstration for unsigned integer modular division *** /
 
-/ *** EXAMPLE 1 *** /
-
+    // * EXAMPLE 1  * //
+    // *  50 mod 3  * //
 
 MAIN, 	Clear
 /Store divisor
 		Load THREE
         Store DIVISOR
-/ 50 mod 3
+/ invoke function
 		Load  FIFTY
         JnS MODULAR_DIV
 /Print quotient
@@ -15,27 +15,27 @@ MAIN, 	Clear
         Output
 
 
-/ *** EXAMPLE 2 *** /
+    // * EXAMPLE 2  * //
+    // *  90 mod 3  * //
 
-
-/Store divisor
+/ Store divisor
 		Load THREE
         Store DIVISOR
-/ 90 % 3 = 0
+/ invoke function
 		Load  NINTEY
         JnS MODULAR_DIV
-/Print quotient
+/ Print quotient
         Load REMAINDER		/ 90 % 3 = 0 
         Output
 
-
-/ *** EXAMPLE 3 *** /
+    // * EXAMPLE 3  * //
+    // *  71 mod 5  * //
 
 
 /Store divisor
 		Load FIVE
         Store DIVISOR
-/ 71 mod 5
+/ invoke function
 		Load  SEVENTY_ONE
         JnS MODULAR_DIV
 /Print quotient

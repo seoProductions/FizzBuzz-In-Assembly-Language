@@ -1,44 +1,48 @@
 ﻿/ *** Demonstration for unsigned integer division *** /
 
-/ *** EXAMPLE 1 *** /
+    // * EXAMPLE 1  * //
+    // *  50 / 3  * //
+
 MAIN, 	Clear
-/Store divisor
+/ Store divisor
 		Load THREE
         Store DIVISOR
-/Divide 50 / 3
+/ invoke function
 		Load  FIFTY
         JnS DIVISION
-/Print quotient
+/ Print quotient
         Load QUOTIENT		/ 50/3 = 16
         Output
         
         Load NEG_ONE		/ reset quotient
         Store QUOTIENT
 
-/ *** EXAMPLE 2 *** /
+    // * EXAMPLE 2  * //
+    // *  90 / 3  * //
 
-/Store divisor
+/ Store divisor
 		Load THREE
         Store DIVISOR
-/Divide 90 / 3
+/ invoke function
 		Load  NINTEY
         JnS DIVISION
-/Print quotient
+/ Print quotient
         Load QUOTIENT		/ 90/3 = 30 
         Output
         
         Load NEG_ONE		/ reset quotient
         Store QUOTIENT
 
-/ *** EXAMPLE 3 *** /
+    // * EXAMPLE 3  * //
+    // *  90 / 3  * //
 
-/Store divisor
+/ Store divisor
 		Load FIVE
         Store DIVISOR
-/Divide 71 / 5
+/ invoke function
 		Load  SEVENTY_ONE
         JnS DIVISION
-/Print quotient
+/ Print quotient
         Load QUOTIENT		/ 71/5 = 14
         Output
         
