@@ -9,7 +9,7 @@ MAIN, 	Clear
 		Load  FIFTY
         JnS DIVISION
 /Print quotient
-        Load QUOTIENT		/ 50/3 = 
+        Load QUOTIENT		/ 50/3 = 16
         Output
         
         Load NEG_ONE		/ reset quotient
@@ -39,7 +39,7 @@ MAIN, 	Clear
 		Load  SEVENTY_ONE
         JnS DIVISION
 /Print quotient
-        Load QUOTIENT		/ 71/5 = 30 
+        Load QUOTIENT		/ 71/5 = 14
         Output
         
         Load NEG_ONE		/ reset quotient
