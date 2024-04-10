@@ -1,0 +1,186 @@
+﻿/ *** This program intends to print each digit of an unsigned number *** /
+/ *** using division and modular division *** /
+
+/ *** We can get the first digit of any number by doing ( mod 10) *** /
+/ *** 255 % 10 = 5, from here we can simply OUTPUT *** /
+
+/ *** To get the next digit's, we truncate the number by (dividing by 10) *** /
+/ *** 255 / 10 = 25,from here we can use modular division again and repeat *** /
+
+/ *** EXAMPLE 1 *** /
+
+MAIN, 	Clear
+		JnS PRINT_COUNT
+        Halt
+		
+/ Output the value of N to OUTPUT: MODE UNICODE UTF-16BE
+PRINT_COUNT,DEC 13
+			Load N 
+			Store TEMP_N
+
+/ if( n - 10 < 0 )
+LOOP,		Load TEMP_N
+			Subt TEN
+            Skipcond 000
+            Jump IF_2
+/ print( n % 10 ) "aka" print ( n )
+			Load TEMP_N
+			Add UNICODE_OFFSET
+			Output
+            JumpI PRINT_COUNT		/ return
+            
+/ else      
+/ if( n - 100 < 0 )
+IF_2,		Load TEMP_N
+			Subt ONE_HUNDRED
+            Skipcond 000
+            Jump IF_3
+/ print( n / 10 )
+            Load TEN
+            Store DIVISOR
+			Load TEMP_N
+            JnS DIVISION
+            Load QUOTIENT
+            Add UNICODE_OFFSET
+			Output
+/ n %= 10 elimitate most significant digit
+			Load TEN
+            Store DIVISOR
+            Load TEMP_N
+            JnS MODULAR_DIV
+			Load REMAINDER
+            Store TEMP_N
+            Jump LOOP 
+            
+/ else
+/ if( temp_n - 1,000 < 0 )
+IF_3,		Load TEMP_N
+			Subt ONE_THOUSAND
+            Skipcond 000
+            Jump IF_4
+/ print( temp_n % 100 )
+            Load ONE_HUNDRED
+            Store DIVISOR
+			Load TEMP_N
+            JnS DIVISION
+            Load QUOTIENT
+			Add UNICODE_OFFSET
+			Output
+/ n %= 100 elimitate most significant digit
+			Load ONE_HUNDRED
+            Store DIVISOR
+            Load TEMP_N
+            JnS MODULAR_DIV
+			Load REMAINDER
+            Store TEMP_N
+            Jump LOOP
+            
+/ else
+/ if( temp_n - 10,000 < 0 )
+IF_4,		Load TEMP_N
+			Subt TEN_THOUSAND
+            Skipcond 000
+            Jump ELSE
+/ print( temp_n % 1000 )
+            Load ONE_THOUSAND
+            Store DIVISOR
+			Load TEMP_N
+            JnS DIVISION
+            Load QUOTIENT
+            Add UNICODE_OFFSET
+			Output
+            Jump LOOP 
+/ n %= 1000 elimitate most significant digit
+			Load ONE_THOUSAND
+            Store DIVISOR
+            Load TEMP_N
+            JnS MODULAR_DIV
+			Load REMAINDER
+            Store TEMP_N
+            Jump LOOP
+            
+/ else
+/ print( temp_n / 10,000 )
+ELSE,	    Load TEN_THOUSAND
+            Store DIVISOR
+			Load TEMP_N
+            JnS DIVISION
+            Load QUOTIENT
+			Add UNICODE_OFFSET
+			Output
+/ n %= 10000 elimitate most significant digit
+			Load TEN_THOUSAND
+            Store DIVISOR
+            Load TEMP_N
+            JnS MODULAR_DIV
+			Load REMAINDER
+            Store TEMP_N
+            Jump LOOP
+            
+/ Division is implimented as repeated subtraction
+/ untill ACCUMILATOR is negative
+/ # QUOTIENT incrimented at each iteration
+DIVISION,	DEC 0 				/ return adress stored here      
+LOOP_,		Store TEMP			/ store value of ACCUMILATOR
+            Load QUOTIENT		
+            Add ONE				/ incriment QUOTIENT
+            Store QUOTIENT
+           
+/ subtraction
+            Load TEMP
+            Subt DIVISOR
+            
+            Skipcond 000		/ return if TEMP < 0
+            Jump LOOP_			/ repeat
+
+			JumpI DIVISION		/ return
+
+
+/ Modular Division is implimented as repeated subtraction
+/ untill ACCUMILATOR is negative
+/ # REMAINDER is the value of AC before it dips below 0
+MODULAR_DIV,DEC 0 				/ return adress stored here
+			
+LOOP__,		Store REMAINDER			/ store value of ACCUMILATOR           
+/ subtraction
+            Subt DIVISOR
+            
+            Skipcond 000		/ return if ACCUMILATOR < 0
+            Jump LOOP__			/ repeat
+
+			JumpI MODULAR_DIV	/ return
+            
+
+/ Example N
+N, DEC 100
+
+/ Variables for printing N
+UNICODE_OFFSET, DEC 48
+
+/ Variables for division
+QUOTIENT,	DEC -1	
+DIVISOR,	DEC 1
+TEMP,		DEC 0	/ Store value of ACC temporarily (while incrimenting quotient)
+TEMP_N,		DEC 0	/ Store value of ACC temporarily (while printing N)
+
+/ Variables for mod division
+REMAINDER,  DEC 0
+
+/ Test numbers
+FIFTY,		DEC 50
+SEVENTY_ONE,DEC 71
+NINTEY,		DEC 90
+TEN,		DEC 10
+ONE,		DEC 1
+
+
+/ Test divisors
+THREE,	 DEC  3
+FIVE,	 DEC  5
+
+/ Other,
+u_INT_MAX,	DEC 32767
+u_INT_MIN,	DEC 32768	/ sign 2's compilment
+TEN_THOUSAND, DEC 10000
+ONE_THOUSAND, DEC 1000
+ONE_HUNDRED,  DEC 100

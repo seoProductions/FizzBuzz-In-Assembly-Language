@@ -1,4 +1,4 @@
-gcc Division_Examples/u_int_division.c \
+gcc print_n/print_n.c \
              -o run
 
 ./run
