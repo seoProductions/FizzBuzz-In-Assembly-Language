@@ -4,18 +4,18 @@
 
 #include <stdio.h>
 
-unsigned int N = 61;            // for counting
+unsigned int N = 123;            // for counting
 unsigned int Quotient = -1;     // store quotient
 unsigned int Remainder = 0;     // store remainder
 unsigned int Divisor  =  1;     // store divisor
-signed   int AC       =  0;     // Accumilator
+signed   int AC       =  0;     // Accumulator
 signed   int Temp_N   =  0;     // Temporary N value
 signed   int TEMP     =  0;     // Temporary N value
 
 
 
 void Modular_Division()
-{   // invisible return adress here
+{   // invisible return address here
 
     loop:
         Remainder = AC;
@@ -26,7 +26,7 @@ void Modular_Division()
 }
 
 void Division()
-{   // invisible return adress here
+{   // invisible return address here
 
     TEMP = AC;
 
@@ -40,7 +40,7 @@ void Division()
 }
 
 void print_count() {
-    Temp_N = N;     // dont want to overide our current N
+    Temp_N = N;     // dont want to override our current N
 
     loop:
         /* if N is one digit long, print and return */
@@ -64,7 +64,8 @@ void print_count() {
             Divisor = 10;
             AC      = Temp_N;
             Division();
-            printf("%C\n", (char)Quotient + 48);
+            printf("%C", (char)Quotient + 48);
+
             Quotient = -1;
 
             // eliminate 2nd digit using modular division
@@ -79,18 +80,18 @@ void print_count() {
 
         /* if N is three digits long, print 3rd digit and remove it */
         AC     = Temp_N;
-        AC    -= 1,000;
+        AC    -= 1000;
 
         if ( AC < 0 )
         {
+
             // isolate 3rd digit using division & print it
 
             Divisor = 100;
             AC      = Temp_N;
             Division();
-            printf("%C\n", (char)Quotient + 48);
+            printf("%C", (char)Quotient + 48);
             Quotient = -1;
-
 
             // eliminate 3rd digit using modular division
 
@@ -104,21 +105,21 @@ void print_count() {
 
         /* if N is four digits long, print 4th digit and remove it */
         AC     = Temp_N;
-        AC    -= 10,000;
+        AC    -= 10000;
 
         if ( AC < 0 )
         {
             // isolate 4th digit using division & print it
 
-            Divisor = 1,000;
+            Divisor = 1000;
             AC      = Temp_N;
             Division();
-            printf("%C\n", (char)Quotient + 48);
+            printf("%C", (char)Quotient + 48);
             Quotient = -1;
 
             // eliminate 4th digit using modular division
 
-            Divisor = 1,000;
+            Divisor = 1000;
             AC      = Temp_N;
             Modular_Division();
             Temp_N = Remainder;     // now 3 digits long
@@ -133,15 +134,15 @@ void print_count() {
             // ****** DEFAULT CASE ******
             // isolate 5th digit using division & print it
 
-            Divisor = 10,000;
+            Divisor = 10000;
             AC      = Temp_N;
             Division();
-            printf("%C\n", (char)Quotient + 48);
+            printf("%C", (char)Quotient + 48);
             Quotient = -1;
 
             // eliminate 5th digit using modular division
 
-            Divisor = 10,000;
+            Divisor = 10000;
             AC      = Temp_N;
             Modular_Division();
             Temp_N = Remainder;     // now 4 digits long
@@ -149,8 +150,16 @@ void print_count() {
             goto loop;
         }
 }
+//#define DEBUG
 
 int main() {
+    N = 65432;
     print_count();
+
+#ifdef DEBUG
+    for (N = 0; N < 115; N++)
+        print_count();
+#endif
+
     return 0;
 }
