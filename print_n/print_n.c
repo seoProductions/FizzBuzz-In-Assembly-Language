@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-unsigned int N = 123;            // for counting
+unsigned int N;                 // for counting
 unsigned int Quotient = -1;     // store quotient
 unsigned int Remainder = 0;     // store remainder
 unsigned int Divisor  =  1;     // store divisor
@@ -49,7 +49,7 @@ void print_N() {
 
         if ( AC < 0 )
         {
-            printf("%C\n", (char)Temp_N + 48);  // 48 is UNICODE offset
+            putchar(Temp_N + 48);  // 48 is UNICODE offset
             return;
         }
 
@@ -64,8 +64,7 @@ void print_N() {
             Divisor = 10;
             AC      = Temp_N;
             Division();
-            printf("%C", (char)Quotient + 48);
-
+            putchar(Quotient + 48);
             Quotient = -1;
 
             // eliminate 2nd digit using modular division
@@ -90,7 +89,8 @@ void print_N() {
             Divisor = 100;
             AC      = Temp_N;
             Division();
-            printf("%C", (char)Quotient + 48);
+            putchar(Quotient + 48);
+
             Quotient = -1;
 
             // eliminate 3rd digit using modular division
@@ -114,7 +114,8 @@ void print_N() {
             Divisor = 1000;
             AC      = Temp_N;
             Division();
-            printf("%C", (char)Quotient + 48);
+            putchar(Quotient + 48);
+
             Quotient = -1;
 
             // eliminate 4th digit using modular division
@@ -137,7 +138,8 @@ void print_N() {
             Divisor = 10000;
             AC      = Temp_N;
             Division();
-            printf("%C", (char)Quotient + 48);
+            putchar(Quotient + 48);
+
             Quotient = -1;
 
             // eliminate 5th digit using modular division
@@ -153,8 +155,9 @@ void print_N() {
 //#define DEBUG
 
 int main() {
-    // print from 0 -> 115
-    for (N = 0; N < 115; N++)
+
+    // print from 0 -> 99
+    for (N = 0; N < 99; N++)
         print_N();
 
 

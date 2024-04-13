@@ -1,15 +1,16 @@
-// Print each digit of the value of N ( as a char & using ASCII table )
-// Combination of both modular and regular division
-// Very tedious
-
+        //    Yup! Fizzbuzz in Assembly!    //
+        //         Translated into C!       //
+        // COSC-2425 Computer Architecture  //
+        //          Eliseo Duque            //
+        //         April 13, 2024           //
 #include <stdio.h>
 
     // ********************* //
     // * Global Variables  * //
     // ********************* //
 
-unsigned int N          = 1;      // for counting
-unsigned int N_MAX      = 150;
+unsigned int N          = 1 ;     // for counting
+unsigned int N_MAX      = 99;
 
 unsigned int Remainder  =  0;     // store remainder
 unsigned int Divisor    =  1;     // store divisor

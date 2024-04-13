@@ -255,7 +255,7 @@ LOOP__,		Store REMAINDER			/ store value of ACCUMILATOR
 
 / Counter for the program
 N,     DEC 1
-N_MAX, DEC 150
+N_MAX, DEC 99
 
 / Variables for printing N
 UNICODE_OFFSET, DEC 48
