@@ -1,19 +1,67 @@
-﻿/ *** This program intends to print each digit of an unsigned number *** /
-/ *** using division and modular division *** /
+﻿        //    Yup! Fizzbuzz in Assembly!    //
+        // COSC-2425 Computer Architecture  //
+        //          Eliseo Duque            //
+        //         April 12, 2024           //
 
-				/ *** How this works *** /
+        // ********** //
+        // ** MAIN ** //
+        // ********** //
 
-/ *** We can get the last digit of 123 any number by doing ( 123 / 100 ) *** /
-/ *** 123 / 100 = 1, from here we can simply OUTPUT *** /
+MAIN, 	    Clear
 
-/ *** To get the next digit's, we truncate the number by doing (123 mod 100) *** /
-/ *** 123 mod 100 = 23, from here we can use division ( 23 / 10 ) again... and repeat *** /
+/ Prepare to do  N mod(3)
+            Load THREE
+            Store DIVISOR
+            Load N
+            JnS MODULAR_DIV
 
-/ *** EXAMPLE 1 *** / / TODO rename file to print_n.mas
+/ Check if divisible
+            Load REMAINDER
+            Skipcond 800	/ Skip if (Remainder > 0)  "not divisible"
+            JnS PRINT_FIZZ
 
-MAIN, 	Clear
-		JnS PRINT_N
-        Halt
+/ Prepare to do  N mod(5)
+            Load FIVE
+            Store DIVISOR
+            Load N
+            JnS MODULAR_DIV
+
+/ Check our result
+            Load REMAINDER
+            Skipcond 800	/ Skip if (Remainder > 0)  "not divisible"
+            JnS PRINT_BUZZ
+
+/ If no FIZZ or BUZZ, then print N
+
+            Load DIVISIBLE_FLAG
+            Skipcond 800
+            JnS PRINT_N     / Skip if (Divisible_flag > 0)  "flag is set"
+
+/ New Line
+            Load \N
+            Output
+
+/ check if we need to iterate again
+            Load N			/ Compare N to Max
+            Subt N_MAX
+            Skipcond 800	/ Skip if (N > Max_N)
+            Jump CONTINUE
+            HALT			/ Terminate the program
+
+/ ++N
+CONTINUE,	Load N
+			Add ONE
+            Store N
+
+/ clear divisible flag
+            Load ZERO
+            Store DIVISIBLE_FLAG
+            Jump MAIN	/ jump back to Main
+
+
+        // ******************** //
+        // * PRINT VALUE OF N * //
+        // ******************** //
 
 / Output the value of N to OUTPUT: MODE UNICODE UTF-16BE
 PRINT_N,    DEC 13
@@ -29,7 +77,7 @@ LOOP,		Load TEMP_N
 			Load TEMP_N
 			Add UNICODE_OFFSET
 			Output
-            JumpI PRINT_COUNT		/ return
+            JumpI PRINT_N		/ return
 
 / if( n - 100 < 0 )
 IF_2,		Load TEMP_N
@@ -128,6 +176,42 @@ ELSE,	    Load TEN_THOUSAND
             Store TEMP_N
             Jump LOOP
 
+
+        // ************** //
+        // * PRINT CHAR * //
+        // ************** //
+
+PRINT_FIZZ,	DEC 14		/ return adress
+			Load F
+			Output
+			Load I
+        	Output
+			Load Z
+        	Output
+			Output
+
+			Load ONE    / set flag
+            Store DIVISIBLE_FLAG
+            JumpI PRINT_FIZZ
+
+
+PRINT_BUZZ,	DEC 25		/ return adress
+        	Load B
+        	Output
+			Load U
+        	Output
+			Load Z
+        	Output
+			Output
+
+			Load ONE    / set flag
+			Store DIVISIBLE_FLAG
+        	JumpI PRINT_BUZZ
+
+        // ************* //
+        // * DIVISION  * //
+        // ************* //
+
 / Division is implimented as repeated subtraction
 / untill ACCUMILATOR is negative
 / # QUOTIENT incrimented at each iteration
@@ -146,6 +230,9 @@ LOOP_,		Store TEMP			/ store value of ACCUMILATOR
 
 			JumpI DIVISION		/ return
 
+        // **************** //
+        // * MODULAR DIV  * //
+        // **************** //
 
 / Modular Division is implimented as repeated subtraction
 / untill ACCUMILATOR is negative
@@ -162,11 +249,18 @@ LOOP__,		Store REMAINDER			/ store value of ACCUMILATOR
 			JumpI MODULAR_DIV	/ return
 
 
-/ Example N
-N, DEC 5342
+        // *************  //
+        // * Variables  * //
+        // *************  //
+
+/ Counter for the program
+N,     DEC 1
+N_MAX, DEC 150
 
 / Variables for printing N
 UNICODE_OFFSET, DEC 48
+DIVISIBLE_FLAG, DEC 0   / boolean value, used to see if we print N
+
 
 / Variables for division
 QUOTIENT,	DEC -1
@@ -175,24 +269,23 @@ TEMP,		DEC 0	/ Store value of ACC temporarily (while incrimenting quotient)
 TEMP_N,		DEC 0	/ Store value of ACC temporarily (while printing N)
 
 / Variables for mod division
-REMAINDER,  DEC 0
+REMAINDER,    DEC 0
 
-/ Test numbers
-FIFTY,		DEC 50
-SEVENTY_ONE,DEC 71
-NINTEY,		DEC 90
-TEN,		DEC 10
-ONE,		DEC 1
+/ ASCII VALUES
+F, 	DEC 70 
+I, 	DEC 73
+Z, 	DEC 90
+B, 	DEC 66
+U, 	DEC 85
+\N, DEC 10
 
-
-/ Test divisors
-THREE,	 DEC  3
-FIVE,	 DEC  5
-
-/ Other,
-u_INT_MAX,	DEC 32767
-u_INT_MIN,	DEC 32768	/ sign 2's compilment
+/ Constants
 TEN_THOUSAND, DEC 10000
 ONE_THOUSAND, DEC 1000
 ONE_HUNDRED,  DEC 100
+TEN,          DEC 10
+ONE,          DEC  1
+ZERO,         DEC  0
 NEG_ONE,	  DEC -1
+THREE,	 DEC  3
+FIVE,	 DEC  5

@@ -1,6 +1,6 @@
-// This program impliments Modular Division as repeated subrtraction
-// It closeley resembles assembly language code, with far greater readability
-// Modern High level languages are soo powerfull we can
+// This program implements Modular Division as repeated subrtraction
+// It closely resembles assembly language code, with far greater readability
+// Modern High level languages are soo powerful we can
 // resolve this code down to 1 single line
 
 //     printf("%i\n", 5 % 3);

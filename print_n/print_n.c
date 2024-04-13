@@ -39,7 +39,7 @@ void Division()
         goto loop;             // repeat
 }
 
-void print_count() {
+void print_N() {
     Temp_N = N;     // dont want to override our current N
 
     loop:
@@ -155,7 +155,7 @@ void print_count() {
 int main() {
     // print from 0 -> 115
     for (N = 0; N < 115; N++)
-        print_count();
+        print_N();
 
 
     return 0;

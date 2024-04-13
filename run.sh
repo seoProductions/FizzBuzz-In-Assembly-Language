@@ -1,4 +1,4 @@
-gcc print_n/print_n.c \
+gcc Fizzbuzz.c \
              -o run
 
 ./run
