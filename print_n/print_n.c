@@ -153,13 +153,10 @@ void print_count() {
 //#define DEBUG
 
 int main() {
-    N = 65432;
-    print_count();
-
-#ifdef DEBUG
+    // print from 0 -> 115
     for (N = 0; N < 115; N++)
         print_count();
-#endif
+
 
     return 0;
 }
