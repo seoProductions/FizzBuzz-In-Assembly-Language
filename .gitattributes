@@ -1,2 +1,5 @@
+# classify `.mas` files as Assembly
 *.mas linguist-language=Assembly
+
+# mark as detectable
 *.mas linguist-detectable
