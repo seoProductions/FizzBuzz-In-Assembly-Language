@@ -49,7 +49,8 @@ MAIN, 	Clear
 / #returns value of AC before it dips below 0
 MODULAR_DIV,DEC 0 				/ return adress stored here
 			
-LOOP,		Store REMAINDER			/ store value of ACCUMILATOR           
+LOOP,		Store REMAINDER		/ store value of ACCUMILATOR
+
 / subtraction
             Subt DIVISOR
             

@@ -13,7 +13,7 @@ unsigned int TEMP     =  0;
 signed   int AC       =  0;
 
 void Division()
-{   // invisible return adress here
+{   // invisible return address here
 
     TEMP = AC;
 

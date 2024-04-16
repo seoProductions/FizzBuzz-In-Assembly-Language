@@ -54,21 +54,21 @@ MAIN, 	Clear
 / Division is implimented as repeated subtraction
 / untill ACCUMILATOR is negative
 DIVISION,	DEC 0 				/ return adress stored here
-			
-            
+
+
 LOOP,		Store TEMP			/ store value of ACCUMILATOR
-            Load QUOTIENT		
+            Load QUOTIENT
             Add ONE				/ incriment QUOTIENT
             Store QUOTIENT
-           
+
 / subtraction
             Load TEMP
             Subt DIVISOR
-            
+
             Skipcond 000		/ return if TEMP < 0
             Jump LOOP			/ repeat
 
-			JumpI DIVISION		/ return
+            JumpI DIVISION		/ return
 
             
 
