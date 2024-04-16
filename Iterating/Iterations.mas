@@ -4,20 +4,19 @@
 MAIN,	CLEAR
 		JUMP LOOP
      
-LOOP,	LOAD I	
-		Skipcond 800	/ If I > 0, continue,
-        JUMP LOOP_FINISH
-        ADD SUM			/ Add to the sum
-        STORE SUM		/ and store it
-        LOAD I
-        Subt ONE		/ Decrement I by 1
-        Store I
-        JUMP LOOP
-		
-        
-LOOP_FINISH,	LOAD SUM	/ Print the sum
-				OUTPUT
-                HALT		/ End the program
+LOOP,	LOAD I
+         Skipcond 800	/ If I > 0, continue,
+         JUMP LOOP_FINISH
+         ADD SUM        / Add to the sum
+         STORE SUM		/ and store it
+         LOAD I
+         Subt ONE       / Decrement I by 1
+         Store I
+         JUMP LOOP
+
+LOOP_FINISH,   LOAD SUM	/ Print the sum
+               OUTPUT
+               HALT		/ End the program
 
 
 / Variables
