@@ -11,7 +11,7 @@ Fizzbuzz is a well known programing challenge. The challenge involves the follow
 
 This project was a MAJOR challenge to make! From the ... TODO, to the many problems I encountered in my jorney. Here is my finished prototype running on [marie.js.org](marie.js.org). Take a look!
 
-<INSERT FINISHED PROGRAM>
+![finished_result](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/c4a66575-c57d-4ee4-97ef-7ae30ff6568b)
 
 
 Buckle your seat belts folks, lets dive into the details
@@ -28,7 +28,7 @@ MARIE stands for ('*Machine Architecture that is Really Intuitive and Easy*'), a
 
 Here is a bird-eye view of the Computer Arcitecture I am working with
 
-<INSERT PHOTO>
+![ComputerImage](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/20a9bf71-ac14-48c0-9ed4-5c275a8ba1ca)
 
 Allow me explain what we are seeing here!
 
@@ -72,7 +72,8 @@ I will be working directly with the Accumilator to handle arethmatic operations,
 
 In addition to this, I will be utilizing the Output register to write to the Terminal/Output using UTF 16BE Unicode.
 
-<INSERT ASCII TABLE>
+![ascii](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/dd126b02-6ebc-47a6-9094-d62c8b1022db)
+
 
 In otherwords, Certain values correspond **->** to a Symbol. This is great as I want the output to be readable and not hex or binary!
     
@@ -123,19 +124,24 @@ As a consequence, the overall excecution and decoding process more efficient wit
 
 Data representation is done using Signed 2's Compliment. With this we are able to represent both positive and negative numbers.
 
-<PHOTO OF SIGNED INTEGER RANGE>
-
-<PHOTO OF SIGNED EXAMPLE WITH BITS AND HEX>
+![u_int_range](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/487267b9-264b-4d46-9b50-a0c2e97d8363)
 
 This is by far the most common representation used by computers today, including the MARIE computer.
 
 
 To finalize, the MARIE computer supports a range of 4KB of word-adressable memory. The [marie.js.org](https://marie.js.org/) website provides a nice and nifty - ***Real Time*** - view of the computers memory being acessed. Take a look. 
 
-<PHOTO OF HEX DUMP MARIE.JS.ORG >
+![hex dump](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/271f8e2b-bf66-4633-a649-899f3d0c40d6)
+
 here are the data / adress busses transmiting data in real time. pretty cool if you ask me
 
-<PHOTO OF DATA BUS AND MEMORY BUS AND CONTROL LINES >
+
+![fast](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/78ae4294-d500-479c-ac83-37f88fab3fa1)
+
+Here it is slowed down x500
+
+![slow](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/ffd25806-5cd9-4cba-9679-461a4185833d)
+
 
 ### Things left out
 For simplistic reasons, MARIE doesent support catche memory, Interrupts, Flags,  ... ect. 
@@ -523,7 +529,8 @@ This is because for my program's OUTPUT, I am using UNICODE UTF 16BE. Behind the
 When I realized this, I realized I hit a wall. Cement Wall.
 Lets take a look at the ASCII table again
 
-<PICTURE OF ASCII TABLE>
+![ascii](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/165d6dac-bc39-4299-9e76-e81e9ebbb8df)
+
 
  The Ascii table only has numbers 0 - 9  Meaning If want to print out an integer like we can in *python* and *C*, I would manualy have to go through each digit and print it. I needed an algorithm for this!
 
