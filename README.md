@@ -9,7 +9,7 @@ Fizzbuzz is a well known programing challenge. The challenge involves the follow
 
 #### *Simple right? ...*
 
-This project was a MAJOR challenge to make! From the ... TODO, to the many problems I encountered in my jorney. Here is my finished prototype running on [marie.js.org](marie.js.org). Take a look!
+This project was a MAJOR challenge to make! From the ... TODO, to the many problems I encountered in my journey. Here is my finished prototype running on [marie.js.org](marie.js.org). Take a look!
 
 ![finished_result](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/c4a66575-c57d-4ee4-97ef-7ae30ff6568b)
 
@@ -116,15 +116,20 @@ HALT
 the MARIE Instruction Set Architecture ( **ISA** ) uses a fixed word length of 16 bits or 2 bytes.
 
 
-<INSERT OPTCODE OPERAND PHOTO 16 BITS TOTAL>
+![image](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/3438c06a-603d-467c-8431-6d2fb876bc42)
 
-<INSERT OPTCODE WITH NO OPERAND, WASTING SPACE>
+All instructions use this many bits. Even the ones that dont need all 16 bits.
+
+![image](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/2256e969-1648-406e-a591-62dbe16918d3)
+
+
 
 As a consequence, the overall excecution and decoding process more efficient with the cost of wasting memory space.
 
 Data representation is done using Signed 2's Compliment. With this we are able to represent both positive and negative numbers.
 
-![u_int_range](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/487267b9-264b-4d46-9b50-a0c2e97d8363)
+![image](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/66ec729e-9853-4dea-8ccb-3f481d69ff67)
+
 
 This is by far the most common representation used by computers today, including the MARIE computer.
 
@@ -182,12 +187,12 @@ if (n % 3 == 0):
 Using C
 ```c
 if (n % 3 == 0)
-    printf("%s", "divisible");
+    printf("divisible");
 ```
 
 The problem is that MARIE Instruction Set doesent include any modular division operator ( % ) let alone instructions. And its not just modular division, no multiplication nor division instructions are provided.
 
-To add to this, their is no for() loop, nor is their if() else() statements.
+To add to this, their is no for() loop
 
 
 ```c
@@ -284,19 +289,20 @@ Thus, I was quickly able to impliment the concept of Iteration in assembly. You 
 
 note: MARIE allows for labels, you can see it as: ***LOOP,*** and ***LOOP_FINISH,***  
 ``` Assembly
-LOOP,	LOAD I 
+LOOP,	 LOAD I 
          Skipcond 800	/ If I > 0, continue,
          JUMP LOOP_FINISH
          ADD SUM        / Add to the sum
-         STORE SUM		/ and store it
+         STORE SUM	/ and store it
          LOAD I
          Subt ONE       / Decrement I by 1
          Store I
          JUMP LOOP      
-		
+
+
 LOOP_FINISH,   LOAD SUM	/ Print the sum
                OUTPUT
-               HALT		/ End the program
+               HALT	/ End the program
 
 ```
 in C
@@ -372,7 +378,8 @@ If you think about it - Division is just repeated subtraction.
 
 More specifically I can describe Division as: start with a number (Dividend) and subtract it by the Divisor over and over again untill the number turns negative.
 
-<INSERT SVG OF SUBTRACTION>
+![division_algorithm](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/2158dae8-8b49-49b9-9d7a-48042e9c7e15)
+
 
 Our Quotient ( or answer ) is simply the amount of times  this subtraction takes place. We can incriment Quotient at every iteration.
 
@@ -386,9 +393,9 @@ DIVISION,	DEC 0 				/ return adress stored here
 			
             
 LOOP,		Store TEMP			/ store value of ACCUMILATOR
-            Load QUOTIENT		
-            Add ONE				/ incriment QUOTIENT
-            Store QUOTIENT
+            	Load QUOTIENT		
+            	Add ONE				/ incriment QUOTIENT
+		Store QUOTIENT
            
 / subtraction
             Load TEMP
@@ -420,7 +427,7 @@ void Division()
 
 Modular division is acually simpler and requires less steps that Division!
 
-<INSERT SVG OF MOD_DIVISION>
+![mod_division_algorithm](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/17e1c494-dc0d-4886-b499-72a708e78551)
 
 
  The difference here is that we dont need a Quotient.  Instead we simply store the value of the Accumilator - into REMAINDER - before every subtraction. Once Accumilator is negative, we return.
@@ -430,17 +437,16 @@ Modular division is acually simpler and requires less steps that Division!
 / untill ACCUMILATOR is negative
 / #returns value of AC before it dips below 0
 
-MODULAR_DIV,DEC 0 				/ return adress stored here
+MODULAR_DIV,DEC 0 			/ return adress stored here
 			
 LOOP,		Store REMAINDER		/ store value of ACCUMILATOR
 
-/ subtraction
-            Subt DIVISOR
+		Subt DIVISOR		/ subtraction
             
-            Skipcond 000		/ return if ACCUMILATOR < 0
-            Jump LOOP			/ repeat
+            	Skipcond 000		/ return if ACCUMILATOR < 0
+            	Jump LOOP		/ repeat
 
-			JumpI MODULAR_DIV	/ return
+		JumpI MODULAR_DIV	/ return
 
 ```
 In C
@@ -536,17 +542,33 @@ Lets take a look at the ASCII table again
 
  ### My solution and Algorithm
 
- My aproach was to utilize my division and modular division instructions to isolate the digits of an integer. I made a cool animation to visualize it.
+ My aproach was to utilize my division and modular division instructions inorder to isolate the digits of an integer. It is quite long and ambiguous to explain, so I made a cool animation to demonstrate it!
 
- <SVG OF ALGORITHM>
+![algorithm](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/44747626-5f56-475e-a9e4-b213999e8494)
 
+Note: The animation only prints a 2 digit number, the source code - in theory - supports all positive integers with the exeption of a bug that slipped through my defence. (feel free to ask)
 
  This was by far the hardest thing I had attempted in low - level programing. I spent an ***entire day*** debugging it, but it is finished and working!
 
- You can find the algorithm under `print_n/print_Count.mas` and for the translation:  `print_n/print_Count.c` for a more readable expirience
+ You can find the algorithm under `print_n/print_Count.mas` and the translation:  `print_n/print_Count.c` if you want a more readable expirience
+
+## Bringing it all together
+
+Taking a look at my learning plan:
+
+
+ - S̶t̶o̶r̶e̶ v̶a̶l̶u̶e̶s̶ a̶s̶ v̶a̶r̶i̶a̶b̶l̶e̶s̶
+ - I̶t̶e̶r̶a̶t̶e̶ f̶r̶o̶m̶ 1̶ t̶o̶ 1̶0̶0̶
+ - T̶e̶s̶t̶ n̶u̶m̶b̶e̶r̶s̶ f̶o̶r̶ d̶i̶v̶i̶s̶i̶b̶i̶l̶i̶t̶y̶
+ - B̶r̶a̶n̶c̶h̶ a̶n̶d̶ u̶s̶e̶ C̶o̶n̶t̶r̶o̶l̶l̶ F̶l̶o̶w̶
+ - P̶r̶i̶n̶t̶ n̶u̶m̶b̶e̶r̶s̶ o̶n̶ t̶h̶e̶ s̶c̶r̶e̶e̶n̶
+
+I have sucesfully implimented all 5 concepts and can finally put together the FIZZBUZZ program!
+Thank you for joining me on this virtual journey :) feel free to check out the finished program at `Fizzbuzz.mas` and `Fizzbuzz.c`. Blessings.
+
 ## Reflection
 
-Looking back at my project, I felt that I had grown 🌱 considerably. This expirience as a whole has made me a better programmer. I now take better desisions 🧠 when writing code, weather it be efficiency wise, and or architecture wise. I do not regret going through this jorney of a project! I do not regret the suffering 😊. I am glad I pushed through and I can now look back and reflect...
+Looking back at my project, I felt that I had grown 🌱 considerably. This expirience as a whole has made me a better programmer. I now take better desisions 🧠 when writing code, weather it be efficiency wise, and or architecture wise. I have no regrets of this project! Nor do I regret the headaches 😊. I am glad I pushed through and I can now look back and reflect...
 ## Q&A
 
 #### Why MARIE Assembly
