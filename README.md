@@ -590,7 +590,7 @@ Thank you for joining me on this virtual journey :) feel free to check out the f
 
 ## Reflection
 
-Looking back at my project, I felt that I had grown 🌱 considerably. This expirience as a whole has made me a better programmer. I now take better desisions 🧠 when writing code, weather it be efficiency wise, and or architecture wise. I have no regrets of this project! Nor do I regret the headaches 😊. I am glad I pushed through and I can now look back and reflect...
+Looking back at my project, I felt that I had grown 🌱 considerably. This expirience as a whole has made me a better programmer. I now take better desisions 🧠 when writing code, wether it be efficiency wise, and or architecture wise. I have no regrets of this project! Nor do I regret the headaches 😊. I am glad I pushed through and I can now look back and reflect...
 
 ## Q&A
 
