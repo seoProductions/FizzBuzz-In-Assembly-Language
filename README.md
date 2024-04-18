@@ -591,7 +591,14 @@ Thank you for joining me on this virtual journey :) feel free to check out the f
 ## Reflection
 
 Looking back at my project, I felt that I had grown 🌱 considerably. This expirience as a whole has made me a better programmer. I now take better desisions 🧠 when writing code, weather it be efficiency wise, and or architecture wise. I have no regrets of this project! Nor do I regret the headaches 😊. I am glad I pushed through and I can now look back and reflect...
+
 ## Q&A
+
+## Where and How can I test the code myself?
+
+Glad you asked! The easiest way is: open the file of your choosing, copy the code, and paste it in the assembler here: [marie.js.org](marie.js.org)
+
+but if your a linux user and feeling frisky: you can assmble and run it from command line! heres a guide! [https://github.com/MARIE-js/MARIE.js/wiki/Setup-and-Development](https://github.com/MARIE-js/MARIE.js/wiki/Setup-and-Development)
 
 #### Why MARIE Assembly
 
