@@ -9,7 +9,7 @@ Fizzbuzz is a well known programing challenge. The challenge involves the follow
 
 #### *Simple right? ...*
 
-This project was a MAJOR challenge to make! From the ... TODO, to the many problems I encountered in my journey. Here is my finished prototype running on [marie.js.org](marie.js.org). Take a look!
+This project was a MAJOR challenge to make! From the language itself, to the many problems I encountered in my journey. Here is my finished prototype running on [marie.js.org](marie.js.org). Take a look!
 
 ![finished_result](https://github.com/seoProductions/FizzBuzz-In-Assembly-Language/assets/111206081/c4a66575-c57d-4ee4-97ef-7ae30ff6568b)
 
@@ -85,9 +85,12 @@ Registers specific to the ***Fetch - Decode - Execute Cycle*** are cruitial for 
 
 the MARIE architecture is mostly based off of ***Accumilator Architecture***. All of the operations are given and utilized by the Accumilator. 
 
-``` Assembly 
+``` Assembly
+/ comments apear like this!
+
 / Accumilator = Acumilator + 1
 Add ONE 
+
 
 / Accumilator = Acumilator - 2
 Subt TWO
@@ -192,13 +195,18 @@ if (n % 3 == 0)
 
 The problem is that MARIE Instruction Set doesent include any modular division operator ( % ) let alone instructions. And its not just modular division, no multiplication nor division instructions are provided.
 
+I am in the wild west 🌵 of computing.
+
 To add to this, their is no for() loop
 
 
 ```c
 // Example in C
+
 for (int n = 0; n <= 100; n++)
     printf("%u", n);
+
+// comments apear like this!
 ```
 
 nor is their any if - else statements
@@ -211,6 +219,7 @@ else
    // do something else
 }
 ```
+
 
 I can assure you that this Project ***for sure*** put my Problem Solving skills on overdrive... oh my, well atleast printing to the OUTPUT *should* be simple....
 
@@ -551,6 +560,19 @@ Note: The animation only prints a 2 digit number, the source code - in theory - 
  This was by far the hardest thing I had attempted in low - level programing. I spent an ***entire day*** debugging it, but it is finished and working!
 
  You can find the algorithm under `print_n/print_Count.mas` and the translation:  `print_n/print_Count.c` if you want a more readable expirience
+
+## New Line
+I oviously dont want the output to be all bunched up!
+
+`12FIZZ4BUZZFIZZ78FIZZBUZZ11FIZZ1314BUZZ....`
+
+I can print the escape character `"\n"` inorder to go to a new line. This is easy to impliment! Looking on the ascii table, ESC character is number 10. This should do it:
+
+```Assembly
+\N,	Dec 10		/ variable
+Load \N
+OUTPUT
+```
 
 ## Bringing it all together
 
